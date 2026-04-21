@@ -4,6 +4,7 @@ import com.ie.beautysalon.Person.dto.PersonDTO;
 import com.ie.beautysalon.Person.entity.PersonEntity;
 import com.ie.beautysalon.Person.service.PersonService;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
@@ -38,7 +39,7 @@ public class PersonController {
 
 
     @PostMapping
-    public ResponseEntity<PersonEntity> createPerson(@RequestBody @NotBlank PersonDTO personDTO) {
+    public ResponseEntity<PersonEntity> createPerson(@RequestBody @NotNull PersonDTO personDTO) {
         PersonEntity personEntity = personService.createPersonEntity(personDTO);
 
         URI location = URI.create("/person" + personEntity.getId());
@@ -49,7 +50,7 @@ public class PersonController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<String> updatePerson(@PathVariable("id") UUID id, @RequestBody @NotBlank PersonDTO personDTO) {
+    public ResponseEntity<String> updatePerson(@PathVariable("id") UUID id, @RequestBody @NotNull PersonDTO personDTO) {
         return ResponseEntity.ok(personService.updatePerson(id, personDTO));
     }
 

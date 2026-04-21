@@ -1,0 +1,56 @@
+<div>
+    <div class="container-fluid">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label>Name</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label>Age</label>
+                <input type="number" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label>Hair color</label>
+                <input type="tex" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label>Hair length</label>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="goToNewPage()">New</button>
+    <button class="btn btn-secondary">Search</button>
+    <button [disabled]="!hasSelectionEdit()" class="btn btn-secondary" (click)="goToEditPage()">Edit</button>
+    <button [disabled]="!hasSelectionDelete()" class="btn btn-danger" (click)="deleteAllSelected()">Delete</button>
+    <button class="btn btn-secondary">Cancel</button>
+</div>
+<div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Hair color</th>
+                <th scope="col">Hair length</th>
+                <th scope="col">Hair description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (person of personList$ | async; track $index) {
+            <tr [class.selected-row]="person.selected">
+                <td>
+                    <input type="checkbox" [checked]="person.selected"
+                        (change)="toggleSelection(person, $event.target.checked)" />
+                </td>
+                <td>{{ person.name }}</td>
+                <td>{{ person.age }}</td>
+                <td>{{ getHairColorLabel(person.hairColor) }}</td>
+                <td>{{ getHairLegthLabel(person.hairLength) }}</td>
+                <td [title]="person.hairDescription">{{ person.hairDescription | slice:0:15 }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -17,6 +17,7 @@ import java.util.UUID;
 @Service
 @Setter(onMethod_ = @Autowired)
 @FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class PersonService {
 
     PersonRepository personRepository;

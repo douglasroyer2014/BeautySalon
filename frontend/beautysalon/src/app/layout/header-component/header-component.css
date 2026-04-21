@@ -1,0 +1,53 @@
+button {
+    height: 50px;
+    width: 200px;
+    font-size: 30px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    border-width: 3px;
+    transition: background-color 1.0s ease, color 1.0s ease, border-color 1.0s ease;
+}
+
+#homeButton {
+    color: #aaa;
+    border-color: #888;
+}
+
+#homeButton:hover {
+    color: #fff;
+    background-color: #aaa;
+    border-color: #000;
+}
+
+#personButton {
+    color: #f24;
+    border-color: #f24;
+}
+
+#personButton:hover {
+    color: #fff;
+    border-color: #000;
+    background-color: #f24;
+}
+
+#productButton {
+    color: #2fa;
+    border-color: #2fa;
+}
+
+#productButton:hover {
+    color: #fff;
+    border-color: #000;
+    background-color: #2fa;
+}
+
+#contactButton {
+    color: #04f;
+    border-color: #04f;
+}
+
+#contactButton:hover {
+    color: #fff;
+    border-color: #000;
+    background-color: #04f;
+}

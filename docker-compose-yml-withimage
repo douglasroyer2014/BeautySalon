@@ -1,0 +1,35 @@
+services:
+  db:
+    image: douglasroyer/beautysalon-db:1.0
+    container_name: beautysalon-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: beautysalon
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    image: douglasroyer/beautysalon-backend:1.0
+    container_name: beautysalon-backend
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/beautysalon
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+
+  frontend:
+    image: douglasroyer/beautysalon-frontend:1.0
+    container_name: beautysalon-frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:

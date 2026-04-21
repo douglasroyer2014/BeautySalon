@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+    <div class="container-fluid">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="col-md-6">
+                <label>Age</label>
+                <input type="number" class="form-control" formControlName="age">
+            </div>
+            <div class="col-md-6">
+                <label>Hair color</label>
+                <select class="form-control" formControlName="hairColor">
+                    <option [ngValue]="null">select...</option>
+                    @for (color of hairColors; track $index) {
+                    <option [ngValue]="color.value">
+                        {{ color.label }}
+                    </option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label>Hair length</label>
+                <select class="form-control" formControlName="hairLength">
+                    <option [ngValue]="null">select...</option>
+                    @for (hairLength of hairLengths; track $index) {
+                    <option [ngValue]="hairLength.value">
+                        {{ hairLength.label }}
+                    </option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label>Hair description</label>
+                <textarea class="form-control" placeholder="Enter description..." rows="3" formControlName="hairDescription"></textarea>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button type="button" class="btn btn-success" [hidden]="!isNew" (click)="onSave()">New</button>
+        <button type="button" class="btn btn-primary" [hidden]="isNew" (click)="onEdit()">Edit</button>
+        <button type="button" class="btn btn-danger" [hidden]="isNew" (click)="onDelete()">Delete</button>
+        <button type="button" class="btn btn-secondary" (click)="goToBackPage()">Cancel</button>
+    </div>
+</form>

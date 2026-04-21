@@ -1,0 +1,14 @@
+.table {
+  --bs-table-hover-bg: #e0f2ff;
+}
+
+tr.selected-row>td {
+  background-color: #d9f2ff;
+}
+
+button {
+  margin-top: 10px;
+  margin-left: 2px;
+  width: 100px;
+  border-radius: 15px;
+}
